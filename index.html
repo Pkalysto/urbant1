@@ -1,106 +1,312 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="pt">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Proposta conceptual T1 - Micalis</title>
+  <title>Micalis Imobiliaria - Proposta T1</title>
   <style>
     :root {
-      --bg: #f5f1ea;
-      --ink: #272521;
-      --muted: #6f675d;
-      --line: #ded6ca;
-      --panel: #fffdf8;
-      --accent: #9b6b35;
+      --red: #e30613;
+      --green: #8bcf00;
+      --ink: #222222;
+      --muted: #666666;
+      --soft: #f2f2f2;
+      --line: #e5e5e5;
+      --panel: #ffffff;
+      --shadow: 0 18px 45px rgba(0,0,0,.10);
     }
     * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body {
       margin: 0;
       font-family: Arial, Helvetica, sans-serif;
       color: var(--ink);
-      background: var(--bg);
+      background: #fff;
       line-height: 1.45;
     }
-    header {
-      min-height: 88vh;
-      display: grid;
-      align-items: end;
-      padding: 44px;
-      background:
-        linear-gradient(90deg, rgba(0,0,0,.58), rgba(0,0,0,.18), rgba(0,0,0,.05)),
-        url("conceito_cozinha_sala.png") center / cover no-repeat;
-      color: white;
-    }
-    .hero {
-      max-width: 760px;
-      padding-bottom: 44px;
-    }
-    h1 {
-      margin: 0 0 14px;
-      font-size: clamp(36px, 7vw, 76px);
-      line-height: .95;
-      letter-spacing: 0;
-    }
-    .hero p {
-      margin: 0;
-      max-width: 620px;
-      font-size: clamp(18px, 2.4vw, 24px);
-    }
-    nav {
+    .topbar {
       position: sticky;
       top: 0;
-      z-index: 5;
+      z-index: 10;
       display: flex;
-      gap: 10px;
       align-items: center;
-      padding: 12px 24px;
-      background: rgba(255,253,248,.94);
+      justify-content: space-between;
+      gap: 28px;
+      padding: 14px clamp(22px, 7vw, 112px);
+      background: rgba(255,255,255,.96);
       border-bottom: 1px solid var(--line);
+      box-shadow: 0 4px 18px rgba(0,0,0,.05);
       backdrop-filter: blur(12px);
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-width: 240px;
+      color: #111;
+      text-decoration: none;
+    }
+    .mark {
+      position: relative;
+      width: 62px;
+      height: 36px;
+    }
+    .mark::before {
+      content: "";
+      position: absolute;
+      left: 2px;
+      top: 14px;
+      width: 42px;
+      height: 12px;
+      border-left: 8px solid var(--red);
+      border-top: 8px solid var(--red);
+      transform: skewX(-28deg) rotate(-8deg);
+    }
+    .mark::after {
+      content: "";
+      position: absolute;
+      left: 7px;
+      bottom: 3px;
+      width: 52px;
+      height: 6px;
+      background: var(--green);
+      border-radius: 8px;
+    }
+    .brand-name {
+      display: grid;
+      line-height: 1;
+      letter-spacing: 8px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 25px;
+      text-transform: uppercase;
+    }
+    .brand-name span {
+      margin-top: 5px;
+      color: #555;
+      letter-spacing: 7px;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 9px;
+    }
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      white-space: nowrap;
+      overflow-x: auto;
     }
     nav a {
       color: var(--ink);
       text-decoration: none;
-      font-weight: 700;
       font-size: 14px;
-      padding: 8px 10px;
-      border-radius: 4px;
+      font-weight: 700;
     }
-    nav a:hover { background: #eee7dc; }
-    section {
-      padding: 56px 44px;
+    nav a:first-child { color: var(--red); }
+    .phone {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      padding: 0 22px;
+      border-radius: 6px;
+      color: #fff;
+      background: var(--red);
+      text-decoration: none;
+      font-weight: 800;
+      white-space: nowrap;
+      box-shadow: 0 8px 20px rgba(227,6,19,.22);
     }
-    .wrap {
-      max-width: 1180px;
-      margin: 0 auto;
-    }
-    .intro {
+    header {
+      position: relative;
+      min-height: 82vh;
       display: grid;
-      grid-template-columns: 1.2fr .8fr;
-      gap: 38px;
-      align-items: start;
+      grid-template-columns: minmax(320px, 560px) 1fr;
+      align-items: center;
+      gap: 32px;
+      padding: 54px clamp(22px, 7vw, 112px);
+      overflow: hidden;
+      background:
+        linear-gradient(90deg, #fff 0%, rgba(255,255,255,.98) 34%, rgba(255,255,255,.78) 48%, rgba(255,255,255,.2) 70%),
+        url("conceito_cozinha_sala.png") center right / cover no-repeat;
     }
-    h2 {
+    .eyebrow {
+      margin: 0 0 8px;
+      color: #5b9d00;
+      font-size: 13px;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+    h1 {
       margin: 0 0 18px;
-      font-size: clamp(28px, 4vw, 44px);
+      max-width: 650px;
+      font-size: clamp(38px, 5.6vw, 72px);
+      line-height: .96;
       letter-spacing: 0;
     }
-    p { margin: 0 0 14px; }
-    .note {
-      border-left: 4px solid var(--accent);
-      padding: 14px 18px;
-      background: var(--panel);
+    h1 strong { color: var(--red); }
+    .hero p {
+      margin: 0 0 24px;
+      max-width: 520px;
       color: var(--muted);
+      font-size: clamp(17px, 1.7vw, 21px);
+      font-weight: 600;
     }
-    .grid {
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 34px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 0 22px;
+      border: 1px solid #222;
+      border-radius: 6px;
+      color: #222;
+      background: white;
+      text-decoration: none;
+      font-weight: 800;
+    }
+    .btn.primary {
+      border-color: var(--red);
+      color: white;
+      background: var(--red);
+      box-shadow: 0 10px 25px rgba(227,6,19,.22);
+    }
+    .features {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 18px;
+      gap: 20px;
+      max-width: 660px;
+    }
+    .feature {
+      display: grid;
+      grid-template-columns: 34px 1fr;
+      gap: 12px;
+      align-items: start;
+    }
+    .icon {
+      display: grid;
+      place-items: center;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      color: white;
+      background: var(--green);
+      font-weight: 900;
+    }
+    .feature strong { display: block; font-size: 14px; }
+    .feature span { color: var(--muted); font-size: 12px; }
+    .search-card {
+      align-self: end;
+      justify-self: end;
+      width: min(100%, 560px);
+      margin-bottom: 28px;
+      padding: 18px;
+      border-radius: 10px;
+      background: #fff;
+      box-shadow: var(--shadow);
+    }
+    .search-card strong {
+      display: block;
+      margin-bottom: 12px;
+      color: #111;
+    }
+    .filters {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 10px;
+    }
+    .filters div {
+      min-height: 36px;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 5px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+    .filters button {
+      grid-column: 1 / -1;
+      min-height: 38px;
+      border: 0;
+      border-radius: 5px;
+      color: white;
+      background: var(--green);
+      font-weight: 900;
+    }
+    section {
+      padding: 58px clamp(22px, 7vw, 112px);
+    }
+    .wrap {
+      max-width: 1240px;
+      margin: 0 auto;
+    }
+    .section-title {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 22px;
+    }
+    h2 {
+      margin: 0;
+      font-size: clamp(28px, 4vw, 44px);
+      line-height: 1;
+      letter-spacing: 0;
+    }
+    h2 strong { color: var(--red); }
+    .mini {
+      margin: 0 0 7px;
+      color: #6aa000;
+      font-size: 12px;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+    .view-all {
+      color: var(--red);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 900;
+    }
+    .intro-grid {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 28px;
+      align-items: stretch;
+    }
+    .copy-block {
+      padding: 26px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: #fff;
+      box-shadow: 0 10px 30px rgba(0,0,0,.06);
+    }
+    .copy-block p { margin: 0 0 14px; color: var(--muted); }
+    .note {
+      margin-top: 18px;
+      padding: 16px 18px;
+      border-left: 4px solid var(--green);
+      border-radius: 8px;
+      background: #fbfff1;
+      color: #4f5f35;
+      font-weight: 700;
+    }
+    .property-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 22px;
     }
     figure {
+      position: relative;
       margin: 0;
-      background: var(--panel);
+      overflow: hidden;
       border: 1px solid var(--line);
+      border-radius: 10px;
+      background: #fff;
+      box-shadow: 0 12px 28px rgba(0,0,0,.08);
     }
     figure img {
       display: block;
@@ -108,45 +314,101 @@
       aspect-ratio: 4 / 3;
       object-fit: cover;
     }
+    .tag {
+      position: absolute;
+      left: 14px;
+      top: 14px;
+      padding: 5px 10px;
+      border-radius: 20px;
+      color: #fff;
+      background: var(--green);
+      font-size: 11px;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
     figcaption {
-      padding: 14px 16px 18px;
+      padding: 16px 18px 18px;
       color: var(--muted);
-      font-size: 15px;
+      font-size: 14px;
     }
     figcaption strong {
       display: block;
-      color: var(--ink);
+      margin-bottom: 5px;
+      color: #111;
       font-size: 18px;
-      margin-bottom: 4px;
     }
+    .price {
+      display: block;
+      margin-top: 11px;
+      color: var(--red);
+      font-weight: 900;
+    }
+    .services {
+      background: #fafafa;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+    .service-grid {
+      display: grid;
+      grid-template-columns: .8fr repeat(3, 1fr);
+      gap: 0;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: #fff;
+      box-shadow: 0 14px 34px rgba(0,0,0,.06);
+    }
+    .service {
+      padding: 26px;
+      border-right: 1px solid var(--line);
+    }
+    .service:last-child { border-right: 0; }
+    .service .round {
+      display: grid;
+      place-items: center;
+      width: 58px;
+      height: 58px;
+      margin-bottom: 14px;
+      border-radius: 50%;
+      color: #fff;
+      background: var(--green);
+      font-weight: 900;
+      font-size: 22px;
+    }
+    .service:nth-child(3) .round { background: var(--red); }
+    .service h3 { margin: 0 0 8px; font-size: 18px; }
+    .service p { margin: 0; color: var(--muted); font-size: 14px; }
     .plan {
       display: grid;
-      grid-template-columns: 1fr .8fr;
-      gap: 28px;
+      grid-template-columns: 1fr .78fr;
+      gap: 30px;
       align-items: center;
     }
     .plan img {
       width: 100%;
-      background: white;
       border: 1px solid var(--line);
+      border-radius: 10px;
+      background: white;
+      box-shadow: 0 12px 30px rgba(0,0,0,.08);
     }
     .tour {
-      background: #201d19;
       color: white;
+      background: #222;
     }
+    .tour .mini { color: var(--green); }
     .viewer {
       position: relative;
-      height: min(70vh, 650px);
+      height: min(72vh, 680px);
       min-height: 420px;
       overflow: hidden;
-      border: 1px solid rgba(255,255,255,.2);
+      border-radius: 12px;
       background: #111;
+      box-shadow: 0 22px 55px rgba(0,0,0,.28);
     }
     .slide {
       position: absolute;
       inset: 0;
       opacity: 0;
-      transform: scale(1.08);
       animation: tour 18s infinite;
     }
     .slide:nth-child(2) { animation-delay: 6s; }
@@ -164,10 +426,12 @@
       position: absolute;
       left: 24px;
       bottom: 24px;
-      padding: 12px 14px;
-      background: rgba(0,0,0,.62);
+      padding: 12px 16px;
+      border-radius: 8px;
+      background: var(--red);
       font-size: 18px;
-      font-weight: 700;
+      font-weight: 900;
+      box-shadow: 0 10px 24px rgba(0,0,0,.25);
     }
     @keyframes tour {
       0% { opacity: 0; }
@@ -177,69 +441,168 @@
       100% { opacity: 0; }
     }
     @keyframes drift {
-      0% { transform: scale(1.08) translateX(-1.5%); }
-      50% { transform: scale(1.14) translateX(1.5%); }
-      100% { transform: scale(1.08) translateX(-1.5%); }
+      0% { transform: scale(1.06) translateX(-1.3%); }
+      50% { transform: scale(1.13) translateX(1.3%); }
+      100% { transform: scale(1.06) translateX(-1.3%); }
     }
+    .contact-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 22px;
+      padding: 24px clamp(22px, 7vw, 112px);
+      color: #fff;
+      background: var(--red);
+    }
+    .contact-strip strong {
+      display: block;
+      margin-bottom: 3px;
+      font-size: 15px;
+    }
+    .contact-strip span { font-size: 13px; }
     footer {
-      padding: 32px 44px;
-      color: var(--muted);
-      border-top: 1px solid var(--line);
-      background: var(--panel);
+      display: grid;
+      grid-template-columns: 1.1fr repeat(3, .7fr);
+      gap: 28px;
+      padding: 34px clamp(22px, 7vw, 112px);
+      color: #d8d8d8;
+      background: #222;
       font-size: 14px;
     }
-    @media (max-width: 860px) {
-      header, section { padding: 32px 22px; }
-      nav { overflow-x: auto; }
-      .intro, .grid, .plan { grid-template-columns: 1fr; }
+    footer h4 {
+      margin: 0 0 12px;
+      color: white;
+    }
+    footer p, footer a {
+      margin: 0 0 7px;
+      color: #d8d8d8;
+      text-decoration: none;
+    }
+    @media (max-width: 980px) {
+      .topbar { align-items: flex-start; flex-direction: column; }
+      nav { width: 100%; }
+      header { grid-template-columns: 1fr; min-height: auto; }
+      .search-card { justify-self: start; }
+      .features, .filters, .property-grid, .service-grid, .intro-grid, .plan, .contact-strip, footer {
+        grid-template-columns: 1fr;
+      }
+      .service { border-right: 0; border-bottom: 1px solid var(--line); }
+      .service:last-child { border-bottom: 0; }
+    }
+    @media (max-width: 640px) {
+      .brand { min-width: 0; }
+      .brand-name { font-size: 20px; letter-spacing: 5px; }
+      header, section { padding: 36px 20px; }
+      .features { grid-template-columns: 1fr; }
       .viewer { min-height: 330px; }
     }
   </style>
 </head>
 <body>
-  <header>
+  <div class="topbar">
+    <a class="brand" href="#">
+      <span class="mark" aria-hidden="true"></span>
+      <span class="brand-name">Micalis <span>Imobiliaria</span></span>
+    </a>
+    <nav aria-label="Navegacao da proposta">
+      <a href="#inicio">Inicio</a>
+      <a href="#conceito">Conceito</a>
+      <a href="#imagens">Imagens</a>
+      <a href="#planta">Planta</a>
+      <a href="#tour">Vista demo</a>
+    </nav>
+    <a class="phone" href="#contactos">915 255 500</a>
+  </div>
+
+  <header id="inicio">
     <div class="hero">
-      <h1>Transformacao em T1</h1>
-      <p>Proposta conceptual para demonstrar o potencial de aproveitamento das duas salas, com cozinha/sala, quarto, casa de banho e lavandaria compacta.</p>
+      <p class="eyebrow">Micalis Imobiliaria</p>
+      <h1>Uma ideia visual para <strong>valorizar o espaco.</strong></h1>
+      <p>Proposta conceptual para transformar duas salas num T1 para arrendamento, com cozinha/sala, quarto, WC e lavandaria compacta.</p>
+      <div class="actions">
+        <a class="btn primary" href="#imagens">Ver proposta</a>
+        <a class="btn" href="#tour">Ver demo animada</a>
+      </div>
+      <div class="features">
+        <div class="feature"><span class="icon">1</span><div><strong>Potencial visual</strong><span>Imagens para perceber a transformacao.</span></div></div>
+        <div class="feature"><span class="icon">2</span><div><strong>Layout T1</strong><span>Organizacao simples e funcional.</span></div></div>
+        <div class="feature"><span class="icon">3</span><div><strong>Validacao tecnica</strong><span>A confirmar antes de obra.</span></div></div>
+      </div>
+    </div>
+    <div class="search-card" aria-label="Simulacao de pesquisa imobiliaria">
+      <strong>Encontre o potencial do imovel</strong>
+      <div class="filters">
+        <div>T1</div>
+        <div>Arrendamento</div>
+        <div>Obra / valorizacao</div>
+        <button type="button">Ver proposta conceptual</button>
+      </div>
     </div>
   </header>
 
-  <nav aria-label="Navegacao da proposta">
-    <a href="#conceito">Conceito</a>
-    <a href="#imagens">Imagens</a>
-    <a href="#planta">Planta</a>
-    <a href="#tour">Vista demo</a>
-  </nav>
-
   <section id="conceito">
-    <div class="wrap intro">
+    <div class="wrap intro-grid">
       <div>
-        <h2>Uma leitura simples do potencial</h2>
-        <p>A proposta coloca a cozinha na parede maior da sala esquerda, aproveitando cerca de 6,5 m de desenvolvimento. A casa de banho e lavandaria ficam junto aos pontos de agua/esgoto, e a sala direita fica reservada para quarto, mantendo a zona comum e o acesso tecnico ao quadro eletrico.</p>
-        <p>O objetivo e mostrar uma solucao realista, compacta e comercialmente apelativa para um T1, sem transformar esta demonstracao num projeto de licenciamento.</p>
+        <p class="mini">Proposta visual inicial</p>
+        <h2>Transformar duas salas num <strong>T1 compacto.</strong></h2>
       </div>
-      <div class="note">
-        Proposta conceptual sujeita a confirmacao por tecnico habilitado, incluindo estrutura, ventilacao, eletricidade, aguas, esgotos e requisitos legais aplicaveis.
+      <div class="copy-block">
+        <p>A proposta coloca a cozinha na parede maior da sala esquerda, aproveitando cerca de 6,5 m de desenvolvimento. A casa de banho e lavandaria ficam junto aos pontos de agua/esgoto, e a sala direita fica reservada para quarto.</p>
+        <p>O objetivo e mostrar uma solucao realista, compacta e comercialmente apelativa, sem transformar esta demonstracao num projeto de licenciamento.</p>
+        <div class="note">Conceito sujeito a confirmacao por tecnico habilitado: estrutura, ventilacao, eletricidade, aguas, esgotos e requisitos legais.</div>
       </div>
     </div>
   </section>
 
   <section id="imagens">
     <div class="wrap">
-      <h2>Imagens de demonstracao</h2>
-      <div class="grid">
+      <div class="section-title">
+        <div>
+          <p class="mini">Imagens em destaque</p>
+          <h2>Antes de obra, <strong>ver o potencial.</strong></h2>
+        </div>
+        <a class="view-all" href="#tour">Ver demo animada -></a>
+      </div>
+      <div class="property-grid">
         <figure>
+          <span class="tag">Proposta</span>
           <img src="conceito_cozinha_sala.png" alt="Conceito de cozinha e sala" />
-          <figcaption><strong>Cozinha + sala</strong>Cozinha corrida na parede maior, com sacada livre para entrada de luz e sala mais desafogada.</figcaption>
+          <figcaption><strong>Cozinha + sala</strong>Cozinha corrida na parede maior, com sala mais desafogada e sacada valorizada.<span class="price">T1 para arrendamento</span></figcaption>
         </figure>
         <figure>
+          <span class="tag">Servico</span>
           <img src="conceito_wc_lavandaria.png" alt="Conceito de casa de banho e lavandaria" />
-          <figcaption><strong>WC + lavandaria</strong>Bloco tecnico junto aos pontos de agua/esgoto, com maquina e arrumacao.</figcaption>
+          <figcaption><strong>WC + lavandaria</strong>Bloco tecnico junto aos pontos de agua/esgoto, com maquina e arrumacao.<span class="price">Solucao compacta</span></figcaption>
         </figure>
         <figure>
+          <span class="tag">Quarto</span>
           <img src="conceito_quarto.png" alt="Conceito de quarto" />
-          <figcaption><strong>Quarto</strong>Quarto reservado com roupeiro, mantendo circulacao e acesso tecnico.</figcaption>
+          <figcaption><strong>Quarto</strong>Quarto reservado com roupeiro, circulacao e acesso tecnico mantido.<span class="price">Zona privada</span></figcaption>
         </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="services">
+    <div class="wrap service-grid">
+      <div class="service">
+        <p class="mini">Como podemos ajudar?</p>
+        <h3>Ideia visual para decisao</h3>
+        <p>Uma apresentacao simples para perceber se a direcao faz sentido antes de avancar.</p>
+      </div>
+      <div class="service">
+        <span class="round">T1</span>
+        <h3>Aproveitar espaco</h3>
+        <p>Duas salas reorganizadas em habitacao compacta e funcional.</p>
+      </div>
+      <div class="service">
+        <span class="round">+</span>
+        <h3>Valorizar imovel</h3>
+        <p>Imagens e planta ajudam a explicar o potencial a clientes ou parceiros.</p>
+      </div>
+      <div class="service">
+        <span class="round">OK</span>
+        <h3>Validar depois</h3>
+        <p>Agua, esgotos, ventilacao e eletricidade devem ser confirmados por tecnico.</p>
       </div>
     </div>
   </section>
@@ -248,7 +611,8 @@
     <div class="wrap plan">
       <img src="esquema_t1_corrigido.svg" alt="Planta conceptual corrigida" />
       <div>
-        <h2>Organizacao proposta</h2>
+        <p class="mini">Organizacao proposta</p>
+        <h2>Uma planta simples para <strong>explicar a obra.</strong></h2>
         <p><strong>Sala esquerda:</strong> cozinha, sala, WC e lavandaria em armario.</p>
         <p><strong>Sala direita:</strong> quarto com roupeiro e zona livre.</p>
         <p><strong>Ponto chave:</strong> manter as zonas molhadas perto das canalizacoes existentes para reduzir complexidade e custo.</p>
@@ -258,26 +622,60 @@
 
   <section id="tour" class="tour">
     <div class="wrap">
-      <h2>Vista demo tipo video</h2>
+      <div class="section-title">
+        <div>
+          <p class="mini">Previsao visual</p>
+          <h2>Vista demo <strong>com movimento.</strong></h2>
+        </div>
+      </div>
       <div class="viewer" aria-label="Sequencia visual animada">
         <div class="slide">
           <img src="conceito_cozinha_sala.png" alt="Vista animada da cozinha e sala" />
-          <div class="label">1. Entrada na cozinha/sala</div>
+          <div class="label">1. Cozinha/sala</div>
         </div>
         <div class="slide">
           <img src="conceito_wc_lavandaria.png" alt="Vista animada do WC e lavandaria" />
-          <div class="label">2. Bloco WC + lavandaria</div>
+          <div class="label">2. WC + lavandaria</div>
         </div>
         <div class="slide">
           <img src="conceito_quarto.png" alt="Vista animada do quarto" />
-          <div class="label">3. Quarto do T1</div>
+          <div class="label">3. Quarto T1</div>
         </div>
       </div>
     </div>
   </section>
 
+  <div id="contactos" class="contact-strip">
+    <div><strong>Fale connosco</strong><span>Estamos disponiveis para ajudar.</span></div>
+    <div><strong>915 255 500</strong><span>Chamada para a rede movel nacional</span></div>
+    <div><strong>micalis.geral@gmail.com</strong><span>Envie-nos um email</span></div>
+    <div><strong>Lamego, Viseu</strong><span>Atendimento por marcacao</span></div>
+  </div>
+
   <footer>
-    Demonstracao visual para apresentacao imobiliaria. As imagens sao conceptuais e devem ser validadas com projeto tecnico antes de qualquer obra.
+    <div>
+      <a class="brand" href="#">
+        <span class="mark" aria-hidden="true"></span>
+        <span class="brand-name">Micalis <span>Imobiliaria</span></span>
+      </a>
+      <p>A sua imobiliaria de confianca em Lamego.</p>
+    </div>
+    <div>
+      <h4>Links Rapidos</h4>
+      <p><a href="#inicio">Inicio</a></p>
+      <p><a href="#imagens">Imagens</a></p>
+      <p><a href="#tour">Vista demo</a></p>
+    </div>
+    <div>
+      <h4>Servicos</h4>
+      <p>Comprar Imovel</p>
+      <p>Vender Imovel</p>
+      <p>Avaliar Imovel</p>
+    </div>
+    <div>
+      <h4>Nota</h4>
+      <p>Demonstracao visual conceptual. As solucoes devem ser validadas antes de qualquer obra.</p>
+    </div>
   </footer>
 </body>
 </html>
